@@ -1,8 +1,10 @@
 from flask import Flask
-from flask_babel import Babel
 from flask_migrate import Migrate
 
 from .src.db import configure_db
+from .src.babel import configure_babel
+
+from .task.routes import task_bp as TaskBluePrint
 
 
 def create_app():
@@ -11,9 +13,11 @@ def create_app():
     app.config.from_object('config.Development')
 
     configure_db(app)
+    configure_babel(app)
 
-    babel = Babel(app)
     Migrate(app, app.db)
+
+    app.register_blueprint(TaskBluePrint)
 
     return app
 
