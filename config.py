@@ -5,7 +5,7 @@ class BaseSettings:
     SECRET_KEY = "5n)5wm0-u7v2us+)bdg*g@_%_8e&xw5otvh&u&du_z87%(4+)+"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = False
-    LANGUAGES = ['en', 'pt-br']
+    LANGUAGES = ['en', 'pt']
 
 
 class Development(BaseSettings):
@@ -13,3 +13,4 @@ class Development(BaseSettings):
     basedir = os.path.abspath(os.path.dirname(__file__))
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'storage.db')
     ENV = 'development'
+    FLASK_ENV = ENV
