@@ -1,0 +1,101 @@
+# Portuguese translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-12-14 03:52-0300\n"
+"PO-Revision-Date: 2021-12-14 03:18-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: pt\n"
+"Language-Team: pt <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app/task/models.py:9 app/templates/task/list.html:59
+msgid "A bit important"
+msgstr "Pouco Importante"
+
+#: app/task/models.py:10 app/templates/task/list.html:60
+msgid "Important"
+msgstr "Importante"
+
+#: app/task/models.py:11 app/templates/task/list.html:61
+msgid "Too much important"
+msgstr "Muito Importante"
+
+#: app/task/models.py:15
+msgid "Created"
+msgstr "Criado"
+
+#: app/task/models.py:16
+#, fuzzy
+msgid "Started"
+msgstr "Iniciar"
+
+#: app/task/models.py:17
+msgid "Paused"
+msgstr "Pausado"
+
+#: app/task/models.py:18
+msgid "Finished"
+msgstr "Terminado"
+
+#: app/templates/base.html:8
+msgid "Task Manager"
+msgstr "Gerenciador de Tarefas"
+
+#: app/templates/task/list.html:5
+msgid "Tasks"
+msgstr "Tarefas"
+
+#: app/templates/task/list.html:15
+msgid "Ready"
+msgstr "Pronto"
+
+#: app/templates/task/list.html:16
+msgid "Stand By"
+msgstr "Em espera"
+
+#: app/templates/task/list.html:31
+msgid "Start"
+msgstr "Iniciar"
+
+#: app/templates/task/list.html:32
+msgid "Delete"
+msgstr "Deletar"
+
+#: app/templates/task/list.html:38
+msgid "Add Task"
+msgstr "Adicionar Nova Task"
+
+#: app/templates/task/list.html:46
+msgid "Add New Task"
+msgstr "Adicionar Nova Task"
+
+#: app/templates/task/list.html:51
+msgid "Title"
+msgstr "Titulo"
+
+#: app/templates/task/list.html:56
+msgid "Type"
+msgstr "Tipo"
+
+#: app/templates/task/list.html:65
+msgid "Description"
+msgstr "Descrição"
+
+#: app/templates/task/list.html:72
+msgid "Come Back"
+msgstr "Voltar"
+
+#: app/templates/task/list.html:73
+msgid "Save Task"
+msgstr "Salvar"
+
