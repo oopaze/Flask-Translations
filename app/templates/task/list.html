@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ _('Tasks') }}
+{% endblock %}
+
+{% block body %}
+{% if context.focus_task %}
+    <div class="focused-task">
+        <h2> {{ context.focus_task.title }} </h2>
+        <span class="{{ context.focus_task.tipo.name }}"> {{ _(context.focus_task.tipo.value) }} </span><br>
+        <span class="{{ context.focus_task.estado.name }}"> {{ _(context.focus_task.estado.value) }} </span><br>
+        <p> {{ context.focus_task.descricao }} </p>
+        <a href="#"> {{ _('Ready') }} </a>
+        <a href="#"> {{ _('Stand By') }} </a>
+    </div>
+{% endif %}
+
+{% for task in context.tasks %}
+    {% if not context.focus_task and loop.index0 == 0 %}
+        <div class="focused-task">
+            <h2> {{ task.title }} </h2>
+            <span class="{{ task.tipo.name }}"> {{ _(task.tipo.value) }} </span>
+            <span class="{{ task.estado.name }}"> {{ _(task.estado.value) }} </span>
+            <p> {{ task.descricao }} </p>
+        </div>
+    {% elif context.focus_id != task.id %}
+        <div class="unfocused-task">
+            <h4> {{ task.title }} ({{ _(task.estado.value) }}) </h4>
+            <a href="#"> {{ _('Start') }} </a>
+            <a href="#"> {{ _('Delete') }} </a>
+        </div>
+    {% endif %}
+{% endfor %}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    {{ _('Add Task') }}
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> {{ _("Add New Task")}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ url_for('task.create_task') }}" method="POST" class="row modal-body">
+                <div class="modal-body">
+                    <label for="title" class="form-label"> {{ _("Title") }} </label>
+                    <div class="input-group col-md-12">
+                        <input type="text" name="title" id="title" class="form-control" required>
+                    </div>
+
+                    <label for="tipo" class="form-label"> {{ _("Type") }} </label>
+                    <div class="input-group col-md-12">
+                        <select name="tipo" id="tipo" class="form-select" required>
+                            <option value="pouco_importante"> {{ _("A bit important") }} </option>
+                            <option value="importante"> {{ _("Important") }} </option>
+                            <option value="muito_importante"> {{ _("Too much important") }} </option>
+                        </select>
+                    </div>
+
+                    <label for="descricao" class="form-label"> {{ _("Description") }} </label>
+                    <div class="input-group col-md-12">
+                        <textarea name="descricao" id="descricao" class="form-control" cols="30" rows="10"
+                            required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> {{ _("Come Back") }}</button>
+                    <button type="submit" class="btn btn-primary">{{ _("Save Task") }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
