@@ -5,6 +5,7 @@ class BaseSettings:
     SECRET_KEY = "5n)5wm0-u7v2us+)bdg*g@_%_8e&xw5otvh&u&du_z87%(4+)+"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = False
+    LANGUAGES = ['en', 'pt-br']
 
 
 class Development(BaseSettings):
