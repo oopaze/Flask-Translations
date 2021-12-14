@@ -1,21 +1,32 @@
+from flask_babel import _
 import enum
 
-from .src.db import db
+from app.src.db import db
+from app.core.models import BaseModel
 
 
 class Tipo(enum.Enum):
-    not_important = "Not Important"
-    medium = "Medium"
-    important = "Important"
+    pouco_importante = _("A bit important")
+    importante = _("Important")
+    muito_importante = _("Too much important")
 
 
-class Task(db.Model):
+class Estado(enum.Enum):
+    criado = _('Created')
+    iniciado = _('Started')
+    pausado = _('Paused')
+    finalizado = _('Finished')
+
+
+class Task(BaseModel, db.Model):
     __tablename__ = 'tasks'
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
     descricao = db.Column(db.Text)
-    tipo = db.Column(db.Enum(Tipo))
+    tipo = db.Column(db.Enum(Tipo), default='pouco_importante')
+
+    estado = db.Column(db.Enum(Estado), default='criado')
 
     def __init__(self, title, descricao, tipo):
         self.title = title
